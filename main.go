@@ -4,7 +4,6 @@ import (
 	"convertqr/service/files"
 	typesLinks "convertqr/types"
 	"convertqr/utils"
-	"fmt"
 	"log"
 	"slices"
 )
@@ -14,7 +13,7 @@ func main() {
 	rows, error := files.ReaderXlsx("./links.xlsx")
 
 	if error != nil {
-		log.Fatal(error)
+		log.Fatal("Could not find links.xlsx file")
 	}
 
 	linksToConvert := []typesLinks.Link{}
@@ -31,5 +30,4 @@ func main() {
 	}
 
 	utils.QRConverter(linksToConvert)
-	fmt.Println(linksToConvert)
 }
